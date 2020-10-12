@@ -1,0 +1,36 @@
+#score 100%
+"""
+Approach 
+- convert the input integer to binary format
+- create group iterator for consecutive squences 
+- find the maximum gap when '0' is surrounded by  '1' 
+- return the maximum gap if there is otherwise  or return zero
+"""
+
+from itertools import groupby
+def solution(N):
+    # write your code in Python 3.6
+    #convert integer to binary
+    b=''
+   
+    while N:
+        b += str(N %2)
+        N =N//2
+    #reverse 
+    b=b[::-1]
+    #initilize maximum gap = 0
+    gap = 0
+    # use groupby to create k, value pair for consecutive sequences 
+    subseq=[(item[0], list(item[1])) for item in groupby(b)]
+    
+   
+    #find the maximum gap
+    for i in range(1, len(subseq)-1):
+        
+        if subseq[i][0] == '0':
+            if subseq[i-1][0] == '1' and subseq[i+1][0] == '1':
+                
+                gap=max(gap, len(list(subseq[i][1])))
+                
+    
+    return gap
