@@ -1,0 +1,36 @@
+def solution(A):
+    # write your code in Python 3.6
+    length=len(A)
+    if length ==1:
+        return 0
+    peaks=[idx for idx in range(1,len(A)-1) if A[idx] > max(A[idx-1],A[idx+1])]
+    
+    if len(peaks) == 0:
+        return 0
+    
+    
+    divisible= map(lambda x: length% x ==0, peaks)
+   
+    blocks=0
+  
+    for peak, flag in zip(peaks,divisible):
+        if flag:
+            sml=min(peak, length//peak)
+            lrg=max(peak,length //peak)
+            isblock=True
+            for j in range(0,length,sml):
+                
+                if not any( map(lambda x:x in peaks ,A[j:j+sml] )):
+                    isblock=False 
+                    break
+            if isblock:
+                blocks = max(blocks, length //sml)
+            isblock=True
+            for j in range(0,length,lrg):
+                if not any( map(lambda x:x in peaks ,A[j:j+lrg] )):
+                    isblock=False
+                    break
+            if isblock:
+                blocks = max(blocks, length //lrg)
+                
+    return blocks
