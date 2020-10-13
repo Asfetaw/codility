@@ -1,0 +1,17 @@
+# time Complexity O(N)
+"""
+Approach
+- creat key, value pair -> key= element and value : frequency
+- find odd freqencey 
+- return key 
+"""
+#import Counter class from collection 
+from collections import Counter
+
+def solution(A):
+    # write your code in Python 3.6
+    #creat key,value pair
+    for key , value in Counter(A).items():
+        #check if value is odd (not divisible by 2), then return the key
+        if value % 2 !=0:
+            return key
