@@ -1,0 +1,12 @@
+# Time Complexity O(1)
+"""
+Approach 
+- if Y-X , return (Y-X) // D
+- else , return (Y-X) // D + 1
+"""
+def solution(X, Y, D):
+    # write your code in Python 3.6
+    if (Y-X) % D ==0:
+        return (Y-X) // D
+    else:
+        return ((Y-X) // D) + 1
