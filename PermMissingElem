@@ -1,0 +1,15 @@
+#time complexity O(N) 
+"""
+Approach
+- using  set operation 
+"""
+def solution(A):
+    # write your code in Python 3.6
+    #Creat complete elements fron 1 -to- N+1
+    All=set(range(1,len(A)+2))
+    #convert the list to set 
+    Given=set(A)
+    #calculate the difference and return the missed element 
+    return list(All.difference(Given))[0]
+    
+   # score 100%
