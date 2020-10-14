@@ -1,0 +1,25 @@
+#Time complexity O(N)
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+#
+"""
+Approach
+- iterate from the first element to the last element 
+- return postions (index of the array) when unique falling leaves equals to X
+- otherwise return -1 when loop ends , in this case the number of unique position less than X , the frog will never jump to the other side of the river
+"""
+def solution(X, A):
+    # write your code in Python 3.6
+    #save the leaves as , this will help to count the unique positions
+    positions=set()
+    #return -1 if empty array , position not defined then frog will never jump
+    if not A:
+        return -1
+    for idx, fallingleaves in enumerate(A):
+        positions.add(fallingleaves)
+        if len(positions) == X:
+            return idx
+
+    return -1
+    
+# Score 100%
