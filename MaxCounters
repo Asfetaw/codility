@@ -1,0 +1,36 @@
+#time complixt O(N+M)
+"""
+Approach 
+- avoiding nested loop (O(N**2))
+to reache the time complexity O(N) by avoiding the counter list operation inside the for loop 
+"""
+
+def solution(N, A):
+    # write your code in Python 3.6
+    #initialize empty list 
+    Counter=[0]*N
+    #set the maximum and minimum counter to zero
+    max_counter=0
+    min_counter=0
+    #visit all elements 
+    for X in A:
+        if X <= N:
+            #keep  the last min counter that is adjusted by min=max before incrementing. If it is less than the minimum count searched
+            if Counter[X-1] < min_counter:
+                Counter[X-1] = min_counter
+            #Increament the counter
+            Counter[X-1] +=1
+            #keep the maximum value 
+            if Counter[X-1] > max_counter:
+                max_counter= Counter[X-1]
+        #set min and max counters equal
+        elif X == N+1:
+            min_counter = max_counter
+    #make adjustment for not visited positions
+    for idx, item in enumerate(Counter):
+        if item < min_counter:
+            Counter[idx] = min_counter
+    #return result       
+    return Counter
+   
+ #Score 100%
