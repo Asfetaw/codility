@@ -1,0 +1,27 @@
+"""
+Approach 
+- count pairs when car travelling to west and atleast one car travelling to east
+- return -1 when number of pairs reaches the maximum 
+- time complexit to O(N)
+"""
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # write your code in Python 3.6
+    pairs=0
+    east =0
+    for idx,car in enumerate(A):
+        #return -1 if number of reaches the maximum requirement
+        if pairs > 1000000000:
+            return -1
+        #is car travelling to east
+        if car == 0:
+           east += 1
+         # is car travelling to west and atleast one car travelling to east . then add the number of cars travelling to east
+        if car == 1 and east >=1:
+             pairs += east
+    
+    return pairs
+    
+   # Score 100%
