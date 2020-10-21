@@ -1,7 +1,7 @@
 #Score 100%
 #minimum permeter  O(sqrt(N))
 1. find the possible factors 
-2. save all the parameters in a list 
+2. save all the perimeters in a list 
 3. return the minimum element of the list 
 
 import math
